@@ -1,0 +1,10 @@
+// Cubre toda la pantalla y bloquea los clics mientras hay peticiones en curso
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.32);
+}
