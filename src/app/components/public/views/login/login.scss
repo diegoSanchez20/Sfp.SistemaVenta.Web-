@@ -1,0 +1,65 @@
+.login {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  min-height: 100vh;
+}
+
+.login__imagen,
+.login__formulario {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.login__imagen {
+  background: white;
+
+  img {
+    max-width: min(100%, 40rem);
+    // Nunca más alta que la pantalla (menos el relleno de arriba y abajo)
+    max-height: calc(100vh - 4rem);
+  }
+}
+
+.login__formulario {
+  background: var(--mat-sys-surface-container-low);
+}
+
+.login__card {
+  width: 100%;
+  max-width: 30rem;
+  padding: 1rem;
+
+  // Subtítulo: más pequeño y en gris (valores del tema de Material)
+  --mat-card-subtitle-text-size: 0.875rem;
+  --mat-card-subtitle-text-weight: 400;
+  --mat-card-subtitle-text-color: var(--mat-sys-on-surface-variant);
+
+  // Título y subtítulo centrados
+  mat-card-header {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.login__boton {
+  height: 3rem;
+}
+
+// En pantallas pequeñas se oculta la ilustración y queda solo el formulario
+@media (max-width: 1150px) {
+  .login {
+    grid-template-columns: 1fr;
+  }
+
+  .login__imagen {
+    display: none;
+  }
+}

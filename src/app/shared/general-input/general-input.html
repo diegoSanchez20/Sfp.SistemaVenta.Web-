@@ -1,0 +1,29 @@
+<mat-form-field appearance="outline">
+  <mat-label>{{ label() }}</mat-label>
+  <input
+    matInput
+    [id]="controlName()"
+    [type]="tipoReal()"
+    [formControl]="control()"
+    [placeholder]="placeholder()"
+    [attr.maxlength]="maxLength()"
+    [attr.autocomplete]="autocomplete()"
+    (keyup.enter)="enter.emit()"
+  />
+
+  @if (esPassword()) {
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      (click)="verPassword.set(!verPassword())"
+      [attr.aria-label]="verPassword() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+    >
+      <mat-icon>{{ verPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+  }
+
+  @if (mostrarError()) {
+    <mat-error>{{ errorMessage() }}</mat-error>
+  }
+</mat-form-field>

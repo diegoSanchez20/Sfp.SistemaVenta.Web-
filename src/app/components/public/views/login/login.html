@@ -1,0 +1,41 @@
+<div class="login">
+  <section class="login__imagen">
+    <img src="images/login.svg" alt="Ilustración de inicio de sesión" />
+  </section>
+
+  <section class="login__formulario">
+    <mat-card appearance="outlined" class="login__card">
+      <mat-card-header>
+        <mat-card-title>Iniciar sesión</mat-card-title>
+        <mat-card-subtitle>Ingrese los datos necesarios para iniciar sesión.</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onClick.iniciarSesion()" class="login__form">
+            <app-general-input
+                [fGroup]="form"
+                controlName="user"
+                label="Usuario"
+                placeholder="Ingrese el usuario"
+                [maxLength]="20"
+                autocomplete="username"
+                [errorMessage]="errorMessages.usuario"
+            />
+
+            <app-general-input
+                [fGroup]="form"
+                controlName="password"
+                type="password"
+                [maxLength]="8"
+                label="Contraseña"
+                placeholder="Ingrese la contraseña"
+                autocomplete="current-password"
+                [errorMessage]="passwordErrorMsg"
+            />
+
+            <button mat-flat-button type="submit" class="login__boton">Ingresar</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>
