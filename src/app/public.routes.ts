@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
+import { noUserGuard } from './guards/no-user.guard';
 
 export const PUBLIC_ROUTES: Routes = [
   {
     path: '',
     loadComponent: () => import('./components/public/layout/layout').then((m) => m.Layout),
+    canActivate: [noUserGuard],
     children: [
       {
         path: 'login',

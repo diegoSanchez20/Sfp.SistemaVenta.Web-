@@ -1,1 +1,59 @@
-<p>layout works!</p>
+<div class="navbar-container">
+
+  <mat-toolbar class="navbar">
+    <button mat-icon-button (click)="sidenav.toggle()" aria-label="Abrir o cerrar el menú">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button (click)="cerrarSesion()" aria-label="Cerrar sesión">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="navbar-sidenav-container">
+    <mat-sidenav #sidenav mode="push">
+      <mat-toolbar>
+        <span>Sistema de Ventas</span>
+      </mat-toolbar>
+
+      <mat-tree #tree [dataSource]="menu" [childrenAccessor]="hijos">
+
+        <!-- Opción simple: lleva a una pantalla -->
+        <mat-tree-node
+          *matTreeNodeDef="let nodo"
+          class="nodo"
+          matTreeNodePadding
+          [matTreeNodePaddingIndent]="16"
+          (click)="sidenav.close()"
+        >
+          <a class="nodo__enlace" [routerLink]="nodo.route" routerLinkActive="nodo__enlace--activo">
+            {{ nodo.label }}
+          </a>
+        </mat-tree-node>
+
+        <!-- Grupo: al pulsarlo se despliega y muestra sus opciones -->
+        <mat-tree-node
+          *matTreeNodeDef="let nodo; when: tieneHijos"
+          class="nodo nodo--grupo"
+          matTreeNodePadding
+          [matTreeNodePaddingIndent]="16"
+          matTreeNodeToggle
+          isExpandable
+        >
+          <span class="nodo__enlace">
+            {{ nodo.label }}
+            <span class="spacer"></span>
+            <mat-icon>{{ tree.isExpanded(nodo) ? 'expand_more' : 'chevron_right' }}</mat-icon>
+          </span>
+        </mat-tree-node>
+
+      </mat-tree>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="container">
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

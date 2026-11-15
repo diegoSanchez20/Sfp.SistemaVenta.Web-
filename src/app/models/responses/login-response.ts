@@ -18,6 +18,9 @@ export interface User {
 
 export interface Permission {
     id:   number;
+    grupo:number;
     name: string;
     slug: string;
+    menu_id: number | null;
+    menu_name: string | null;
 }

@@ -10,6 +10,7 @@ import { REGEX_SOLO_NUMEROS } from '../../../../constants/main_constants';
 import { GeneralInput } from '../../../../shared/general-input/general-input';
 import { LoginRequest } from '../../../../models/requests/login-request';
 import { LoginService } from '../../../../services/login.service';
+import { AuthService } from '../../../../services/auth.service';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -31,6 +32,7 @@ export class Login {
 
   private readonly fb = inject(FormBuilder);
   private readonly loginService = inject(LoginService);
+  private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   protected readonly verPassword = signal(false);
   protected readonly form = this.fb.nonNullable.group({
@@ -57,9 +59,6 @@ export class Login {
         return;
       }
       
-      console.log(this.form.value.password);
-      console.log(this.form.value.user);
-      
       let params: LoginRequest = {
         user: this.form.value.user ?? '',
         password: this.form.value.password ?? ''
@@ -67,11 +66,10 @@ export class Login {
 
       let response = await this.services.login(params);
 
-      console.log(response);
 
-      if(response.status === 200){
-        sessionStorage.setItem('access_token', response.body?.data.access_token ?? '');
-        sessionStorage.setItem('user', JSON.stringify(response.body?.data.user ?? {}));
+      if(response.status === 200 && response.body){
+        const { access_token, user } = response.body.data;
+        this.auth.setSession(access_token, user);
         await this.router.navigate(['/private'], { replaceUrl: true });
       }
 
