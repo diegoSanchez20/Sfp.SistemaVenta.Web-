@@ -24,7 +24,7 @@ export class MenuService {
       return this.http.post<MenuListResponse>(`${this.url}/list`, params , { observe: 'response'});
     }
 
-    public getMenu(id:number):Observable<HttpResponse<MenuGetResponse>>{
+    public getId(id:number):Observable<HttpResponse<MenuGetResponse>>{
       return this.http.get<MenuGetResponse>(`${this.url}/${id}`,{ observe: 'response'});
     }
 

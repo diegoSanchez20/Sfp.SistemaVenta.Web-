@@ -1,5 +1,5 @@
 export interface ListRequest{
-    perPage:number,
+    per_page:number,
     page:number
     search:string
 }
