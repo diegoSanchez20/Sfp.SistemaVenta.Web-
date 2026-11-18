@@ -5,8 +5,6 @@ export interface RoleCreateResponse {
 
 export interface RoleCreateDataResponse {
     id: number;
-    name: string;
-    status: boolean;
 }
 
 

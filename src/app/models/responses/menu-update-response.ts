@@ -5,8 +5,6 @@ export interface MenuUpdateResponse {
 
 export interface MenuUpdateDataResponse {
     id: number;
-    name: string;
-    status: boolean;
 }
 
 

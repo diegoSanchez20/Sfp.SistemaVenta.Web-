@@ -5,8 +5,6 @@ export interface RoleUpdateStatusResponse {
 
 export interface RoleUpdateStatusDataResponse {
     id: number;
-    name: string;
-    status: boolean;
 }
 
 
