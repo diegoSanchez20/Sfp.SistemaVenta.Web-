@@ -28,5 +28,6 @@ export class GeneralButton {
   // Material solo conoce primary/accent/warn; el gris se pinta con la clase "gris"
   protected readonly colorMaterial = computed<ThemePalette>(() => (this.gris() ? undefined : (this.color() as ThemePalette)));
 
-  protected readonly esFontAwesome = computed(() => this.icon().startsWith('fa-'));
+  // Font Awesome si empieza por "fa-" o "fa " (ej. "fa-solid fa-xmark", "fa fa-search")
+  protected readonly esFontAwesome = computed(() => /^fa[ -]/.test(this.icon()));
 }

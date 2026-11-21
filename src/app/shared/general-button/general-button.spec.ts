@@ -77,4 +77,12 @@ describe('GeneralButton', () => {
     expect(icono).not.toBeNull();
     expect(boton().querySelector('mat-icon')).toBeNull();
   });
+
+  it('también reconoce iconos de Font Awesome que empiezan por "fa " (ej. "fa fa-search")', () => {
+    fixture.componentRef.setInput('icon', 'fa fa-search');
+    fixture.detectChanges();
+
+    expect(boton().querySelector('i.fa.fa-search')).not.toBeNull();
+    expect(boton().querySelector('mat-icon')).toBeNull();
+  });
 });

@@ -40,7 +40,7 @@ export class Menu implements OnInit {
   private readonly menuService = inject(MenuService);
 
   private readonly pageSize = 15;
-  private readonly listaRequest: ListRequest = { per_page: this.pageSize, page: 1, search: '' };
+  private listaRequest: ListRequest = { per_page: this.pageSize, page: 1, search: '' };
 
   // protected readonly statusCreateEdit = signal(false);
   protected readonly menus = signal<MenuListItemReponse[]>([]);
@@ -68,7 +68,17 @@ export class Menu implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setDataSearch();
     void this.loadData();
+  }
+
+  // Arma la petición del listado con el texto del buscador y la página actual
+  private setDataSearch(): void {
+    this.listaRequest = {
+      search: this.formSearch.getRawValue().name.trim(),
+      page: this.pagination().pagesActual,
+      per_page: this.pageSize,
+    };
   }
 
   campoEsValido(){
@@ -92,7 +102,6 @@ export class Menu implements OnInit {
       this.cargado.set(true);
     }
   }
-
 
   protected readonly onClick = {
     cambiarPagina: (pagesActual: number) => {
@@ -146,7 +155,7 @@ export class Menu implements OnInit {
       if(response.status == 200){
         Swal.fire({
           icon: 'success',
-          html: `El menú <strong>${ name.toLowerCase() }</strong> se ${ status ? 'habilitó' : 'deshabilitó' } correctamente`,
+          html: `El menú <strong>${ name }</strong> se ${ status ? 'habilitó' : 'deshabilitó' } correctamente`,
         });
         
         this.onClick.cancelar();
@@ -173,6 +182,15 @@ export class Menu implements OnInit {
           name: menu.name,
         });
       }
+    },
+    buscar: async () => {
+      this.pagination.update((p) => ({ ...p, pagesActual: 1 }));
+      this.setDataSearch();
+      await this.loadData();
+    },
+    cancelarBusqueda: async () => {
+      this.formSearch.reset();
+      await this.onClick.buscar();
     },
   };
 

@@ -39,6 +39,31 @@
     <div id="description-content-crud">
         Aquí encontrará todos los menú agregados
     </div>
+    <div id="search-content-crud">
+        <div class="grid">
+            <app-general-input
+                class="col-12"
+                [fGroup]="formSearch"
+                controlName="name"
+                label="Nombre"
+                placeholder="Ingrese el nombre del menú"
+                (enter)="onClick.buscar()"
+            />
+        </div>
+        <div class="search-actions">
+            <app-general-button
+                icon="fa fa-search"
+                tooltip="Buscar"
+                (clicked)="onClick.buscar()"
+            />
+            <app-general-button
+                icon="fa-solid fa-xmark"
+                tooltip="Cancelar"
+                [color]="undefined"
+                (clicked)="onClick.cancelarBusqueda()"
+            />
+        </div>
+    </div>
     <div id="list-content-crud">
         @if (!cargado()) {
             <!-- Cargando: el loader global ya se muestra; no se pinta nada todavía -->

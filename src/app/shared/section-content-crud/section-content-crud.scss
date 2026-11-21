@@ -1,6 +1,17 @@
 @use '../section-crud';
 
 // Diseño del contenido que cada pantalla proyecta en el slot (así no se repite en cada scss)
+:host ::ng-deep #search-content-crud {
+  margin-bottom: 1.5rem;
+
+  // Botones del buscador (buscar, cancelar): al final del eje x, uno junto al otro
+  .search-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+}
+
 :host ::ng-deep #list-content-crud {
   // Aviso cuando no hay datos
   .sin-datos {
