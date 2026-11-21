@@ -1,0 +1,37 @@
+.card-item{
+  margin-bottom: 0px!important;
+}
+
+.card-footer{
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+  border-top: 1px solid #c3c3c3;
+}
+
+// Diseño del contenido que cada pantalla proyecta en los slots (así no se repite en cada scss)
+// Contenido de la tarjeta: icono a la izquierda y datos a la derecha
+:host ::ng-deep #content-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+
+  .item__icono {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    font-size: 48px;
+  }
+
+  .item__nombre {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+}
+
+// Botones de la tarjeta (editar, deshabilitar...): uno junto al otro
+:host ::ng-deep #action-item {
+  display: flex;
+  gap: 0.5rem;
+}

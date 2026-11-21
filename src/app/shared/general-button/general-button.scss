@@ -1,0 +1,9 @@
+:host {
+  display: inline-block;
+}
+
+// Botón secundario: fondo gris con el icono oscuro
+.gris {
+  --mat-fab-small-container-color: #e0e0e0;
+  --mat-fab-small-foreground-color: rgba(0, 0, 0, 0.87);
+}

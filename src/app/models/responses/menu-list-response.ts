@@ -1,6 +1,6 @@
 export interface MenuListResponse {
     data:    MenuListItemReponse[];
-    meta:    MenuListItemReponse;
+    meta:    MetaMenuListResponse;
     message: string;
 }
 

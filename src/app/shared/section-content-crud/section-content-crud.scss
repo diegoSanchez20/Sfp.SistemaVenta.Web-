@@ -1,0 +1,26 @@
+@use '../section-crud';
+
+// Diseño del contenido que cada pantalla proyecta en el slot (así no se repite en cada scss)
+:host ::ng-deep #list-content-crud {
+  // Aviso cuando no hay datos
+  .sin-datos {
+    margin: 0;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #031633;
+    color: #6ea8fe;
+  }
+
+  // Tarjetas del listado: una columna en móvil, tres en pantalla ancha
+  .lista {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .lista {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use '../section-crud';
+
+// Diseño del contenido que cada pantalla proyecta en el slot (así no se repite en cada scss)
+// Botones de acción (guardar, cancelar...): uno junto al otro
+:host ::ng-deep #action-form-crud {
+  display: flex;
+  gap: 0.5rem;
+}

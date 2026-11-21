@@ -1,5 +1,5 @@
 export interface MenuGetResponse {
-    data:    MenuGetItemResponse[];
+    data:    MenuGetItemResponse;
     message: string;
 }
 

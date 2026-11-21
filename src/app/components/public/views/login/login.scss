@@ -22,7 +22,7 @@
 }
 
 .login__formulario {
-  background: var(--mat-sys-surface-container-low);
+  background: #f8f7fa;
 }
 
 .login__card {
@@ -33,7 +33,7 @@
   // Subtítulo: más pequeño y en gris (valores del tema de Material)
   --mat-card-subtitle-text-size: 0.875rem;
   --mat-card-subtitle-text-weight: 400;
-  --mat-card-subtitle-text-color: var(--mat-sys-on-surface-variant);
+  --mat-card-subtitle-text-color: rgba(0, 0, 0, 0.6);
 
   // Título y subtítulo centrados
   mat-card-header {

@@ -1,0 +1,34 @@
+// Diseño común de las secciones de las pantallas CRUD (formulario y listado):
+// título, descripción y tarjeta con su barra de acciones. Lo usan section-form-crud y section-content-crud
+// para que las dos secciones se vean iguales.
+
+:host {
+  display: block;
+}
+
+// Separación entre secciones de una misma pantalla
+:host(:not(:first-child)) {
+  margin-top: 1.5rem;
+}
+
+.title-crud {
+  font-weight: 600 !important;
+  font-size: 1.75rem !important;
+  color: rgb(17 24 39) !important;
+}
+
+.description {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: rgb(75 85 99);
+}
+
+.card {
+  margin-top: 0.75rem;
+}
+
+mat-card-actions.actions {
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgb(250 250 250);
+}

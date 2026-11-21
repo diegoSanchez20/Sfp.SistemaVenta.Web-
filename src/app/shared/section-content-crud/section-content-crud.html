@@ -1,0 +1,15 @@
+<div class="title-crud">
+  <ng-content select="#title-content-crud"></ng-content>
+</div>
+<div class="description">
+  <ng-content select="#description-content-crud"></ng-content>
+</div>
+
+<mat-card class="card">
+  <mat-card-content>
+    <ng-content select="#list-content-crud"></ng-content>
+  </mat-card-content>
+  <mat-card-actions align="end" class="actions">
+    <ng-content select="#action-content-crud"></ng-content>
+  </mat-card-actions>
+</mat-card>

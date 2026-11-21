@@ -1,0 +1,16 @@
+.badge {
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 12px;
+}
+
+.habilitado {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.deshabilitado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}

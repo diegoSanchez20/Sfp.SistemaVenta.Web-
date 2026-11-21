@@ -1,0 +1,16 @@
+<button
+  mat-mini-fab
+  [color]="colorMaterial()"
+  [class.gris]="gris()"
+  [type]="type()"
+  [title]="tooltip()"
+  [attr.aria-label]="tooltip()"
+  [disabled]="disabled()"
+  (click)="clicked.emit()"
+>
+  @if (esFontAwesome()) {
+    <i [class]="icon()" aria-hidden="true"></i>
+  } @else {
+    <mat-icon>{{ icon() }}</mat-icon>
+  }
+</button>

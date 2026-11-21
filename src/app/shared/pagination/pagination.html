@@ -1,0 +1,45 @@
+<div class="paginacion">
+  @if (totalRows()) {
+    <p class="paginacion__total">Total de registros: {{ totalRows() }}</p>
+  }
+
+  <ul class="paginacion__lista">
+    <li>
+      <button
+        type="button"
+        class="pagina"
+        aria-label="Página anterior"
+        [disabled]="pagesActual() === 1"
+        (click)="prevPage()"
+      >
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+    </li>
+
+    @for (page of pages(); track page) {
+      <li>
+        <button
+          type="button"
+          class="pagina"
+          [class.pagina--activa]="page === pagesActual()"
+          [attr.aria-current]="page === pagesActual() ? 'page' : null"
+          (click)="selectPage(page)"
+        >
+          {{ page }}
+        </button>
+      </li>
+    }
+
+    <li>
+      <button
+        type="button"
+        class="pagina"
+        aria-label="Página siguiente"
+        [disabled]="pagesActual() >= pagesTotal()"
+        (click)="nextPage()"
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>
