@@ -1,6 +1,6 @@
 export interface RoleListResponse {
     data:    RoleListItemReponse[];
-    meta:    RoleListItemReponse;
+    meta:    MetaRoleListResponse;
     message: string;
 }
 

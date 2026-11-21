@@ -1,5 +1,5 @@
 export interface RoleGetResponse {
-    data:    RoleGetItemResponse[];
+    data:    RoleGetItemResponse;
     message: string;
 }
 

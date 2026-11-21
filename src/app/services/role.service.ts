@@ -15,7 +15,7 @@ import { RoleUpdateStatusRequest } from "../models/requests/role-update-status-r
 @Injectable({
   providedIn: 'root'
 })
-export class RolesService {
+export class RoleService {
 
     private url = `${environment.baseUrl}/roles`
     private readonly http = inject(HttpClient);  

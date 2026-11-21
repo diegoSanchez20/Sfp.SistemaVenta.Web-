@@ -1,4 +1,4 @@
 export interface RoleUpdateRequest{
-    id: number,
+    id: string,
     name: string,
 }

@@ -1,1 +1,124 @@
-<p>role works!</p>
+<app-section-form-crud>
+    <div id="title-form-crud">
+        Crear o Editar Rol
+    </div>
+    <div id="description-form-crud">
+        Complete la información necesaria para crear o editar el Rol
+    </div>
+    <div id="content-form-crud">
+        <div class="grid">
+            <app-general-input
+                class="col-12 sm:col-6"
+                [fGroup]="form"
+                controlName="name"
+                label="Nombre"
+                placeholder="Ingrese el nombre"
+                [errorMessage]="errorMessages.name"
+            />
+        </div>
+    </div>
+    <div id="action-form-crud">
+        <app-general-button
+            icon="fa-solid fa-floppy-disk"
+            tooltip="Guardar"
+            (clicked)="onClick.guardar()"
+        />
+        <app-general-button
+            icon="fa-solid fa-xmark"
+            tooltip="Cancelar"
+            [color]="undefined"
+            (clicked)="onClick.cancelar()"
+        />
+    </div>
+</app-section-form-crud>
+<app-section-content-crud>
+    <div id="title-content-crud">
+        Listar Rol
+    </div>
+    <div id="description-content-crud">
+        Aquí encontrará todos los roles agregados
+    </div>
+    <div id="search-content-crud">
+        <div class="grid">
+            <app-general-input
+                class="col-12"
+                [fGroup]="formSearch"
+                controlName="name"
+                label="Nombre"
+                placeholder="Ingrese el nombre del rol"
+                (enter)="onClick.buscar()"
+            />
+        </div>
+        <div class="search-actions">
+            <app-general-button
+                icon="fa fa-search"
+                tooltip="Buscar"
+                (clicked)="onClick.buscar()"
+            />
+            <app-general-button
+                icon="fa-solid fa-xmark"
+                tooltip="Cancelar"
+                [color]="undefined"
+                (clicked)="onClick.cancelarBusqueda()"
+            />
+        </div>
+    </div>
+    <div id="list-content-crud">
+        @if (!cargado()) {
+            <!-- Cargando: el loader global ya se muestra; no se pinta nada todavía -->
+        } @else if (roles().length === 0) {
+            <p class="sin-datos">No se encontraron datos</p>
+        } @else {
+            <div class="lista">
+                @for (item of roles(); track item.id) {
+                    <app-section-item-crud>
+                        <div id="content-item">
+                            <mat-icon class="item__icono">dns</mat-icon>
+                            <div>
+                                <div class="item__nombre">{{ item.name }}</div>
+                                @if (item.status) {
+                                    <app-badge-status nameStatus="Habilitado" />
+                                } @else {
+                                    <app-badge-status nameStatus="Deshabilitado" statusColor="deshabilitado" />
+                                }
+                            </div>
+                        </div>
+                        <div id="action-item">
+                            <app-general-button
+                                icon="fa-solid fa-pen-to-square"
+                                tooltip="Editar"
+                                color="secondary"
+                                (clicked)="onClick.getRole(item.id!)"
+                            />
+                            @if(item.status){
+                                <app-general-button
+                                    icon="fa-solid fa-trash"
+                                    tooltip="Deshabilitar"
+                                    color="secondary"
+                                    (clicked)="onClick.actualizarEstado(item)"
+                                />
+                            }@else{
+                                <app-general-button
+                                    icon="fa-solid fa-check"
+                                    tooltip="Habilitar"
+                                    color="secondary"
+                                    (clicked)="onClick.actualizarEstado(item)"
+                                />
+                            }
+                        </div>
+                    </app-section-item-crud>
+                }
+            </div>
+        }
+    </div>
+    <div id="action-content-crud">
+        @if (roles().length > 0) {
+            <app-pagination
+                [pagesTotal]="pagination().pagesTotal"
+                [pagesActual]="pagination().pagesActual"
+                [totalRows]="pagination().totalRows"
+                (eventChangePage)="pagination().onChangePage($event)"
+            />
+        }
+    </div>
+</app-section-content-crud>

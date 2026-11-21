@@ -63,7 +63,7 @@ export class Menu implements OnInit {
     onChangePage: (pagesActual: number) => this.onClick.cambiarPagina(pagesActual),
   });
 
-   protected readonly errorMessages = {
+  protected readonly errorMessages = {
     name:"El nombre es obligatorio",
   }
 
@@ -155,7 +155,7 @@ export class Menu implements OnInit {
       if(response.status == 200){
         Swal.fire({
           icon: 'success',
-          html: `El menú <strong>${ name }</strong> se ${ status ? 'habilitó' : 'deshabilitó' } correctamente`,
+          html: `El menú <strong>${ name }</strong> se ${ status ? 'deshabilitó' : 'habilitó' } correctamente`,
         });
         
         this.onClick.cancelar();
