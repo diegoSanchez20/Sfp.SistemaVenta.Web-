@@ -1,7 +1,7 @@
 export interface PermissionUpdateRequest{
-    id: number
+    id: string
     name:string;
     slug:string;
-    menu_id:number;
-    grupo:number;
+    menu_id:string;
+    grupo:string;
 }

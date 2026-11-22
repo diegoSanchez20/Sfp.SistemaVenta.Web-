@@ -4,11 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { startWith, switchMap } from 'rxjs';
-
-export interface SelectOption {
-  id: number | string;
-  name: string;
-}
+import { SelectOption } from '../../models/responses/select-option';
 
 @Component({
   selector: 'app-general-select',

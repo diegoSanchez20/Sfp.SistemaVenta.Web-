@@ -1,6 +1,6 @@
 export interface PermissionListResponse {
     data:    PermissionListItemReponse[];
-    meta:    PermissionListItemReponse;
+    meta:    MetaPermissionListResponse;
     message: string;
 }
 

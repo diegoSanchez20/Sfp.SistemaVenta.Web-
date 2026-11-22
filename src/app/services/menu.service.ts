@@ -11,33 +11,38 @@ import { MenuUpdateRequest } from "../models/requests/menu-update-request";
 import { MenuUpdateResponse } from "../models/responses/menu-update-response";
 import { MenuUpdateStatusRequest } from "../models/requests/menu-update-status-request";
 import { MenuUpdateStatusResponse } from "../models/responses/menu-update-status-response";
+import { MenuComboResponse } from "../models/responses/combo-menu-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-    private url = `${environment.baseUrl}/menus`
-    private readonly http = inject(HttpClient);  
+  private url = `${environment.baseUrl}/menus`
+  private readonly http = inject(HttpClient);  
 
-    public getAll(params: ListRequest):Observable<HttpResponse<MenuListResponse>>{
-      return this.http.post<MenuListResponse>(`${this.url}/list`, params , { observe: 'response'});
-    }
+  public getAll(params: ListRequest):Observable<HttpResponse<MenuListResponse>>{
+    return this.http.post<MenuListResponse>(`${this.url}/list`, params , { observe: 'response'});
+  }
 
-    public getId(id:number):Observable<HttpResponse<MenuGetResponse>>{
-      return this.http.get<MenuGetResponse>(`${this.url}/${id}`,{ observe: 'response'});
-    }
+  public getId(id:number):Observable<HttpResponse<MenuGetResponse>>{
+    return this.http.get<MenuGetResponse>(`${this.url}/${id}`,{ observe: 'response'});
+  }
 
-    public create(params: MenuCreateRequest):Observable<HttpResponse<MenuCreateResponse>>{
-      return this.http.post<MenuCreateResponse>(`${this.url}`, params ,{ observe: 'response'});
-    }
+  public create(params: MenuCreateRequest):Observable<HttpResponse<MenuCreateResponse>>{
+    return this.http.post<MenuCreateResponse>(`${this.url}`, params ,{ observe: 'response'});
+  }
 
-    public update(params: MenuUpdateRequest):Observable<HttpResponse<MenuUpdateResponse>>{
-      return this.http.put<MenuUpdateResponse>(`${this.url}/${params.id}`, params ,{ observe: 'response'});
-    }
+  public update(params: MenuUpdateRequest):Observable<HttpResponse<MenuUpdateResponse>>{
+    return this.http.put<MenuUpdateResponse>(`${this.url}/${params.id}`, params ,{ observe: 'response'});
+  }
 
-    public updateStatus(params:MenuUpdateStatusRequest):Observable<HttpResponse<MenuUpdateStatusResponse>>{
-      return this.http.put<MenuUpdateStatusResponse>(`${this.url}/${params.id}/status`, params ,{ observe: 'response'});
-    }
+  public updateStatus(params:MenuUpdateStatusRequest):Observable<HttpResponse<MenuUpdateStatusResponse>>{
+    return this.http.put<MenuUpdateStatusResponse>(`${this.url}/${params.id}/status`, params ,{ observe: 'response'});
+  }
+
+  public comboMenu():Observable<HttpResponse<MenuComboResponse>>{
+    return this.http.get<MenuComboResponse>(`${this.url}/combo`,{ observe: 'response'});
+  }
 
 }
