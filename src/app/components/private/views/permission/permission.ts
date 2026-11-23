@@ -54,7 +54,7 @@ export class Permission implements OnInit{
     name: ['', Validators.required],
     slug: ['', Validators.required],
     grupo: ['', Validators.required],
-    menu_id: ['', Validators.required],
+    menu_id: [''],
   });
 
   protected readonly formSearch = this.fb.nonNullable.group({
@@ -72,7 +72,6 @@ export class Permission implements OnInit{
     name:"El nombre es obligatorio",
     slug:"El slug es obligatorio",
     grupo:"El grupo es obligatorio",
-    menu_id:"El menu es obligatorio",
   }
 
   ngOnInit(): void{
@@ -200,7 +199,7 @@ export class Permission implements OnInit{
           name: permission.name,
           grupo: permission.grupo,
           slug: permission.slug,
-          menu_id: permission.menu_id
+          menu_id: permission.menu_id === null ? '' : String(permission.menu_id)
         });
       }
     },

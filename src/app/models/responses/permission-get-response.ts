@@ -7,7 +7,7 @@ export interface PermissionGetItemResponse {
     id:     number;
     name:   string;
     slug:   string;
-    menu_id:   string;
+    menu_id:   number | null;
     grupo:   string;
     status: boolean;
 }

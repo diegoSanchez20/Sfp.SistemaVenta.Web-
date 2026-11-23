@@ -8,7 +8,7 @@ export interface PermissionListItemReponse {
     id:         number;
     name:       string;
     slug:       string;
-    menu_id:    number;
+    menu_id:    number | null;
     grupo:      number;
     status:     boolean;
     created_at: Date;

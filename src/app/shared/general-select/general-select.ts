@@ -19,7 +19,12 @@ export class GeneralSelect {
   readonly label = input('');
   readonly errorMessage = input('');
   readonly options = input<SelectOption[]>([]);
+  // Si se indica, el select suma una primera opción vacía con este texto (ej. "Sin menú"); al elegirla el valor queda en "" (texto vacío)
+  readonly emptyLabel = input('');
   readonly changed = output<void>();
+
+  // El valor del formulario puede ser texto ("5") y el de la opción un número (5): se comparan como texto
+  protected readonly compararValores = (a: unknown, b: unknown): boolean => String(a ?? '') === String(b ?? '');
 
   // El FormControl se busca dentro del FormGroup con el nombre recibido
   protected readonly control = computed(() => {
