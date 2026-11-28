@@ -17,6 +17,7 @@ import { SectionItemCrud } from '../../../../shared/section-item-crud/section-it
 import { BadgeStatus } from '../../../../shared/badge-status/badge-status';
 import { GeneralInput } from '../../../../shared/general-input/general-input';
 import { GeneralButton } from '../../../../shared/general-button/general-button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-role',
@@ -38,6 +39,7 @@ export class Role {
 
   private readonly fb = inject(FormBuilder);
   private readonly roleService = inject(RoleService);
+  private readonly router = inject(Router);
   private readonly pageSize = 15;
   private listaRequest: ListRequest = { 
     per_page: this.pageSize, 
@@ -190,6 +192,9 @@ export class Role {
       this.formSearch.reset();
       await this.onClick.buscar();
     },
+    irRolePermission: (id:number) => {
+      this.router.navigate(['/private/role-permission', id]);
+    }
   }
 
   private readonly service = {

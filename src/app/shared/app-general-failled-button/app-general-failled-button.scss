@@ -1,0 +1,14 @@
+:host {
+  display: inline-block;
+}
+
+// Botón secundario: fondo gris con el texto oscuro
+.gris {
+  --mat-button-filled-container-color: #e0e0e0;
+  --mat-button-filled-label-text-color: rgba(0, 0, 0, 0.87);
+}
+
+// Separación entre el icono Font Awesome y el texto
+i {
+  margin-right: 8px;
+}

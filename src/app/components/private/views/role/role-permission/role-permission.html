@@ -1,0 +1,62 @@
+<app-section-content-crud>
+    <div id="title-content-crud">
+        Asignando permisos al rol: {{ rol_name() }}
+    </div>
+    <div id="description-content-crud">
+        Complete la información necesaria para asignar los permiso al rol {{ rol_name() }}
+    </div>
+    <div id="search-content-crud">
+        <div class="grid">
+            <app-general-input
+                class="col-12"
+                [fGroup]="formSearch"
+                controlName="name"
+                label="Nombre"
+                placeholder="Ingrese el nombre del permiso"
+                (enter)="onClick.buscar()"
+            />
+        </div>
+        <div class="search-actions">
+            <app-general-button
+                icon="fa fa-search"
+                tooltip="Buscar"
+                (clicked)="onClick.buscar()"
+            />
+            <app-general-button
+                icon="fa-solid fa-xmark"
+                tooltip="Cancelar"
+                [color]="undefined"
+                (clicked)="onClick.cancelarBusqueda()"
+            />
+        </div>
+    </div> 
+    <div id="list-content-crud">
+        <div class="lista">
+            @for (item of encabezados(); track item.grupo) {
+                <app-section-item-crud>
+                    <div id="content-item">
+                        <div>
+                            {{ item.name }} ({{ totalOpcionesSeleccionadas(item.grupo) }})
+                        </div>
+                        <app-general-failled-button
+                            [label]="todosSeleccionados(item.grupo) ? 'Quitar todos' : 'Marcar todos'"
+                            [color]="todosSeleccionados(item.grupo) ? 'secondary' : 'primary'"
+                            (clicked)="onClick.marcarQuitarTodos(item.grupo)"
+                        />
+                    </div>
+                    <div id="content-item-options">
+                        @for (subitem of opcionesDelGrupo(item.grupo); track subitem.id) {
+                            <div class="container-options">
+                                <div>{{ subitem.name }}</div>
+                                <app-general-switch
+                                    [checked]="subitem.assigned"
+                                    (changed)="onClick.cambiarAsignacion(subitem.id, $event)"
+                                />
+                            </div>
+                        }
+                    </div>
+                </app-section-item-crud>
+            }
+        </div>
+    </div>
+</app-section-content-crud>

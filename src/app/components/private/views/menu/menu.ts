@@ -34,7 +34,7 @@ import Swal from 'sweetalert2';
   styleUrl: './menu.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Menu implements OnInit {
+export class Menu {
 
   private readonly fb = inject(FormBuilder);
   private readonly menuService = inject(MenuService);

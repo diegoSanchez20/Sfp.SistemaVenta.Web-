@@ -1,0 +1,17 @@
+<button
+  mat-flat-button
+  [color]="colorMaterial()"
+  [class.gris]="gris()"
+  [type]="type()"
+  [disabled]="disabled()"
+  (click)="clicked.emit()"
+>
+  @if (icon()) {
+    @if (esFontAwesome()) {
+      <i [class]="icon()" aria-hidden="true"></i>
+    } @else {
+      <mat-icon>{{ icon() }}</mat-icon>
+    }
+  }
+  {{ label() }}
+</button>

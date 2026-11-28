@@ -37,7 +37,7 @@ import { SelectOption } from '../../../../models/responses/select-option';
   templateUrl: './permission.html',
   styleUrl: './permission.scss',
 })
-export class Permission implements OnInit{
+export class Permission{
 
   private readonly fb = inject(FormBuilder);
   private readonly permissionService = inject(PermissionService);

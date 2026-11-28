@@ -85,6 +85,12 @@
                         </div>
                         <div id="action-item">
                             <app-general-button
+                                icon="fa-solid fa-server"
+                                tooltip="Asignar Permiso"
+                                color="secondary"
+                                (clicked)="onClick.irRolePermission(item.id!)"
+                            />
+                            <app-general-button
                                 icon="fa-solid fa-pen-to-square"
                                 tooltip="Editar"
                                 color="secondary"

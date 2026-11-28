@@ -11,33 +11,39 @@ import { PermissionUpdateRequest } from "../models/requests/permission-update-re
 import { PermissionUpdateResponse } from "../models/responses/permission-update-response";
 import { PermissionUpdateStatusRequest } from "../models/requests/permission-update-status-request";
 import { PermissionUpdateStatusResponse } from "../models/responses/permission-update-status-response";
+import { RolePermissionAsignarListarRequest } from "../models/requests/role-permission-assign-list-request";
+import { RolePermissionAssignListListResponse } from "../models/responses/role-permission-assign-list-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermissionService {
 
-    private url = `${environment.baseUrl}/permissions`
-    private readonly http = inject(HttpClient);  
+  private url = `${environment.baseUrl}/permissions`
+  private readonly http = inject(HttpClient);  
 
-    public getAll(params: ListRequest):Observable<HttpResponse<PermissionListResponse>>{
-      return this.http.post<PermissionListResponse>(`${this.url}/list`, params , { observe: 'response'});
-    }
+  public getAll(params: ListRequest):Observable<HttpResponse<PermissionListResponse>>{
+    return this.http.post<PermissionListResponse>(`${this.url}/list`, params , { observe: 'response'});
+  }
 
-    public getId(id:number):Observable<HttpResponse<PermissionGetResponse>>{
-      return this.http.get<PermissionGetResponse>(`${this.url}/${id}`,{ observe: 'response'});
-    }
+  public getId(id:number):Observable<HttpResponse<PermissionGetResponse>>{
+    return this.http.get<PermissionGetResponse>(`${this.url}/${id}`,{ observe: 'response'});
+  }
 
-    public create(params: PermissionCreateRequest):Observable<HttpResponse<PermissionCreateResponse>>{
-      return this.http.post<PermissionCreateResponse>(`${this.url}`, params ,{ observe: 'response'});
-    }
+  public create(params: PermissionCreateRequest):Observable<HttpResponse<PermissionCreateResponse>>{
+    return this.http.post<PermissionCreateResponse>(`${this.url}`, params ,{ observe: 'response'});
+  }
 
-    public update(params: PermissionUpdateRequest):Observable<HttpResponse<PermissionUpdateResponse>>{
-      return this.http.put<PermissionUpdateResponse>(`${this.url}/${params.id}`, params ,{ observe: 'response'});
-    }
+  public update(params: PermissionUpdateRequest):Observable<HttpResponse<PermissionUpdateResponse>>{
+    return this.http.put<PermissionUpdateResponse>(`${this.url}/${params.id}`, params ,{ observe: 'response'});
+  }
 
-    public updateStatus(params:PermissionUpdateStatusRequest):Observable<HttpResponse<PermissionUpdateStatusResponse>>{
-      return this.http.put<PermissionUpdateStatusResponse>(`${this.url}/${params.id}/status`, params ,{ observe: 'response'});
-    }
+  public updateStatus(params:PermissionUpdateStatusRequest):Observable<HttpResponse<PermissionUpdateStatusResponse>>{
+    return this.http.put<PermissionUpdateStatusResponse>(`${this.url}/${params.id}/status`, params ,{ observe: 'response'});
+  }
+
+  public getAllPermissionActive(params:RolePermissionAsignarListarRequest):Observable<HttpResponse<RolePermissionAssignListListResponse>>{
+    return this.http.post<RolePermissionAssignListListResponse>(`${this.url}/active`, params ,{ observe: 'response'});
+  }
 
 }

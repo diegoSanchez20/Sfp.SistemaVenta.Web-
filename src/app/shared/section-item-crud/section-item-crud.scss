@@ -9,6 +9,18 @@
   border-top: 1px solid #c3c3c3;
 }
 
+.card-footer-options{
+  padding: 10px;
+  border-top: 1px solid #c3c3c3;
+}
+
+.card-footer,
+.card-footer-options {
+  &:empty {
+    display: none;
+  }
+}
+
 // Diseño del contenido que cada pantalla proyecta en los slots (así no se repite en cada scss)
 // Contenido de la tarjeta: icono a la izquierda y datos a la derecha
 :host ::ng-deep #content-item {

@@ -33,6 +33,11 @@ export const PRIVATE_ROUTES: Routes = [
         loadComponent: () => import('./components/private/views/permission/permission').then((m) => m.Permission),
         title: 'Permisos',
       },
+      {
+        path: 'role-permission/:id',
+        loadComponent: () => import('./components/private/views/role/role-permission/role-permission').then((m) => m.RolePermission),
+        title: 'RolePermission',
+      },
       { path: '', pathMatch: 'full', redirectTo: 'client' },
     ],
   },
